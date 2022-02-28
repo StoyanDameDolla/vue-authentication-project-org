@@ -1,10 +1,12 @@
-import Vue from "vue";
-import Vuex from "vuex";
-import { auth } from "./auth.module";
-Vue.use(Vuex);
+import {createStore} from "vuex";
+import {auth} from "./auth.module";
 
-export default new Vuex.Store({
-  modules: {
-    auth,
-  },
+console.log(auth)
+
+const store = createStore({
+    modules: {
+        auth: auth,
+    },
 });
+
+export default store;

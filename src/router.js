@@ -1,15 +1,14 @@
-import Vue from "vue";
-import Router from "vue-router";
+import {createRouter, createWebHistory } from "vue-router";
 import Home from "./views/Home.vue";
 import Login from "./views/Login.vue";
 import Register from "./views/Register.vue";
 
 // Apply routing to Vue Login/Register page
-Vue.use(Router);
 
-export const router = new Router({
+
+const router = createRouter({
   // Configure routes
-  mode: "history",
+  history: createWebHistory('/'),
   routes: [
     {
       path: "/",
@@ -64,3 +63,6 @@ router.beforeEach((to, from, next) => {
     next();
   }
 });
+
+
+export default router;

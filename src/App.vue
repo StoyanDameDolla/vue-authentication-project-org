@@ -52,11 +52,23 @@
   </div>
 </template>
 <script>
+import { mapState } from 'vuex'
+
 export default {
   computed: {
-    currentUser() {
-      return this.$store.state.auth.user;
-    },
+    ...mapState({
+      currentUser: (state) => {
+        return state.auth.user
+      }
+
+    }),
+
+    // ,currentUser() {
+    //   console.log(this.$store)
+    //   return this.$store.state.auth.user;
+    // },
+  },
+  methods: {
     showAdminBoard() {
       if (this.currentUser && this.currentUser.roles) {
         return this.currentUser.roles.includes("ROLE_ADMIN");
@@ -69,8 +81,6 @@ export default {
       }
       return false;
     },
-  },
-  methods: {
     logOut() {
       this.$store.dispatch("auth/logout");
       this.$router.push("/login");
